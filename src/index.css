@@ -1,0 +1,3 @@
+.am-button-ghost::before {
+  border: none !important;
+}

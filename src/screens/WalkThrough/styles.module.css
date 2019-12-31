@@ -1,0 +1,12 @@
+.signInButton {
+  border: 2px solid #00DDEE !important;
+  color: black;
+}
+
+.getStartedButton {
+  background-color: #1787E0;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+
+}
