@@ -3,6 +3,9 @@ import Flex from 'antd-mobile/lib/flex';
 import WingBlank from 'antd-mobile/lib/wing-blank'
 import Button from 'antd-mobile/lib/button';
 import WhiteSpace from 'antd-mobile/lib/white-space';
+import Toast from 'antd-mobile/lib/toast';
+
+import { GoogleLogin, GoogleLoginResponse } from 'react-google-login';
 
 import AppNavbar from '../../components/AppNavBar';
 import GoogleIcon from '../../assets/icons/search.png';
@@ -20,10 +23,23 @@ const SignIn: React.FunctionComponent = () => {
         <WhiteSpace />
         <Divider size={2} />
         <WhiteSpace />
-        <Button
-          icon={<img src={GoogleIcon} alt="GoogleIcon" />}>
-          Sign in with Google
-        </Button>
+        <GoogleLogin
+          clientId="458356373181-1l0lv4rogi9ps4h6osgj2js56vicfj03.apps.googleusercontent.com"
+          onSuccess={(response) => {
+            const data = (response as GoogleLoginResponse);
+            Toast.success(`Google has verified you as ${data.profileObj.name} !!!`);
+          }}
+          onFailure={(error) => {
+            Toast.fail(error.error);
+          }}
+          render={(props) => (
+            <Button
+              {...props}
+              icon={<img src={GoogleIcon} alt="GoogleIcon" />}>
+              Sign in with Google
+            </Button>
+          )}
+        />
       </WingBlank>
     </Flex>
   );
