@@ -25,6 +25,7 @@ const SignUp: React.FunctionComponent = () => {
         <WhiteSpace />
         <GoogleLogin
           clientId="458356373181-1l0lv4rogi9ps4h6osgj2js56vicfj03.apps.googleusercontent.com"
+          cookiePolicy={'single_host_origin'}
           onSuccess={(response) => {
             const data = (response as GoogleLoginResponse);
             Toast.success(`Google has verified you as ${data.profileObj.name} !!!`);
