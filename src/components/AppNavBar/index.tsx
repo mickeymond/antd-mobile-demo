@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from 'antd-mobile/lib/nav-bar';
-import Icon from 'antd-mobile/lib/icon';
+import { Icon } from 'antd/es';
 import SegmentedControl from 'antd-mobile/lib/segmented-control';
 
 type AppNavbarProps = {
@@ -18,13 +18,13 @@ const AppNavbar: React.FunctionComponent<AppNavbarProps> = ({hasControls = false
       mode="light"
       icon={hasBackButton ? (
         <Icon
-          type="left"
+          type="arrow-left"
           onClick={() => history.goBack()} />
       ): ''}
     >
       {hasControls ? <SegmentedControl
         selectedIndex={selectedSegment}
-        values={['1st', '2nd', '3rd', '4th']}
+        values={['Step 1', 'Step 2', 'Step 3', 'Step 4']}
         style={{width: '70vw' }}
       /> : ''}
     </NavBar>

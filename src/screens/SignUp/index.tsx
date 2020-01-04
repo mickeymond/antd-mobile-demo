@@ -25,7 +25,7 @@ const SignUp: React.FunctionComponent = () => {
       direction="column"
       align="stretch">
       <AppNavbar
-        hasBackButton={true}
+        hasBackButton
       />
       <WingBlank>
         <h2>Sign up with work email</h2>
@@ -42,7 +42,7 @@ const SignUp: React.FunctionComponent = () => {
             register({ variables: { googleOAuthToken: data.tokenId } })
             .then(success => {
               setLoading(false);
-              localStorage.setItem('token', success.data.login.token);
+              localStorage.setItem('token', success.data.register.token);
               history.push('/user/info');
             })
             .catch(error => {

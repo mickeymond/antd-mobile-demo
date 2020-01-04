@@ -6,7 +6,9 @@ query {
     _id
     firstName
     lastName
+    email
     picture
+    role
   }
 }
 `;

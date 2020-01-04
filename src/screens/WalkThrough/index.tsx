@@ -12,6 +12,8 @@ const WalkThrough: React.FunctionComponent = () => {
   const history = useHistory();
   const data = ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'];
 
+  localStorage.clear();
+
   return (
     <Flex
       direction="column"

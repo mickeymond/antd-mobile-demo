@@ -5,6 +5,7 @@ import Button from 'antd-mobile/lib/button';
 import WhiteSpace from 'antd-mobile/lib/white-space';
 import Toast from 'antd-mobile/lib/toast';
 
+import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import { GoogleLogin, GoogleLoginResponse } from 'react-google-login';
 
@@ -17,13 +18,14 @@ import { LOGIN } from '../../mutations';
 const SignIn: React.FunctionComponent = () => {
   const [login] = useMutation(LOGIN);
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   return (
     <Flex
       direction="column"
       align="stretch">
       <AppNavbar
-        hasBackButton={true}
+        hasBackButton
       />
       <WingBlank>
         <h2>Sign in with work email</h2>
@@ -40,8 +42,9 @@ const SignIn: React.FunctionComponent = () => {
             login({ variables: { googleOAuthToken: data.tokenId } })
             .then(success => {
               setLoading(false);
-              // localStorage.setItem('token', success.data.login.token);
-              Toast.success('You have been Authenticated Successfully', 10);;
+              localStorage.setItem('token', success.data.login.token);
+              Toast.success('You have been Authenticated Successfully', 10);
+              history.replace('/');
             })
             .catch(error => {
               setLoading(false);
