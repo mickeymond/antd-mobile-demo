@@ -6,13 +6,15 @@ import WhiteSpace from 'antd-mobile/lib/white-space';
 import Carousel from 'antd-mobile/lib/carousel';
 import Flex from 'antd-mobile/lib/flex';
 
+import localForage from 'localforage';
+
 import styles from './styles.module.css';
 
 const WalkThrough: React.FunctionComponent = () => {
   const history = useHistory();
   const data = ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'];
 
-  localStorage.clear();
+  localForage.clear();
 
   return (
     <Flex
