@@ -23,16 +23,12 @@ const MainAppLayout: React.FunctionComponent = () => {
   const [selectedTab, setSelectedTab] = React.useState(1);
   const { loading, error, data } = useQuery(GET_PROFILE);
 
-  if (!localStorage.getItem('token')) {
-    return <Redirect to="/getting-started" />
-  }
-
   if (loading) {
     return <ActivityIndicator toast text="Getting User Info..." />
   }
 
   if (error) {
-    Toast.fail(error.message, 10);
+    Toast.fail(error.message);
     return <Redirect to="/getting-started" />;
   }
 

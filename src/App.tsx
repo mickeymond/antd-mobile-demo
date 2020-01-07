@@ -9,12 +9,13 @@ import UserInfo from './screens/AccountSetup/UserInfo';
 
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+import localForage from 'localforage';
 
 const client = new ApolloClient({
   uri: 'https://kitchin-app-server.herokuapp.com',
-  request: (operation) => {
+  request: async operation => {
     try {
-      const token = localStorage.getItem('token');
+      const token = await localForage.getItem('token');
       operation.setContext({
         headers: {
           authorization: token ? `Bearer ${token}` : ''

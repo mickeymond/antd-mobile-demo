@@ -8,6 +8,7 @@ import Toast from 'antd-mobile/lib/toast';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import { GoogleLogin, GoogleLoginResponse } from 'react-google-login';
+import localForage from 'localforage';
 
 import AppNavbar from '../../components/AppNavBar';
 import GoogleIcon from '../../assets/icons/search.png';
@@ -42,17 +43,17 @@ const SignIn: React.FunctionComponent = () => {
             login({ variables: { googleOAuthToken: data.tokenId } })
             .then(success => {
               setLoading(false);
-              localStorage.setItem('token', success.data.login.token);
-              Toast.success('You have been Authenticated Successfully', 10);
-              history.replace('/');
+              localForage.setItem('token', success.data.login.token).then(val => {
+                history.replace('/');
+              });
             })
             .catch(error => {
               setLoading(false);
-              Toast.fail(error.message, 10);
+              Toast.fail(error.message);
             });
           }}
           onFailure={(error) => {
-            Toast.fail(error.error, 10);
+            Toast.fail(error.error);
           }}
           render={(props) => (
             <Button

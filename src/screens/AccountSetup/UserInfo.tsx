@@ -37,7 +37,7 @@ const UserInfo: React.FunctionComponent = () => {
   }
 
   if (error) {
-    Toast.fail(error.message, 10);
+    Toast.fail(error.message);
     return <Redirect to="/getting-started" />;
   }
 
