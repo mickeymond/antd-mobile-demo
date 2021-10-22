@@ -3,3 +3,8 @@
 .am-button-ghost::before {
   border: none !important;
 }
+
+#root {
+  width: 400px;
+  height: 700px;
+}

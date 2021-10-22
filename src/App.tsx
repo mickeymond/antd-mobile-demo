@@ -11,6 +11,18 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import localForage from 'localforage';
 
+// import * as firebase from 'firebase';
+
+// firebase.initializeApp({
+//   apiKey: "AIzaSyCp4rMq_fQxK85gCRjvA_t-MUI7074Q8n0",
+//   authDomain: "firstappendpoint.firebaseapp.com",
+//   databaseURL: "https://firstappendpoint.firebaseio.com",
+//   projectId: "firstappendpoint",
+//   storageBucket: "firstappendpoint.appspot.com",
+//   messagingSenderId: "458356373181",
+//   appId: "1:458356373181:web:0bd253b4a9015654d369d4"
+// });
+
 const client = new ApolloClient({
   uri: 'https://kitchin-app-server.herokuapp.com',
   request: async operation => {
@@ -24,7 +36,7 @@ const client = new ApolloClient({
     } catch (error) {
     }
   }
-})
+});
 
 const App: React.FunctionComponent = () => {
   return (

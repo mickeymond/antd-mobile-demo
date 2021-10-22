@@ -1,25 +1,26 @@
 {
-  "short_name": "Kitchin",
-  "name": "MEST Kitchin App",
-  "icons": [
+  "manifest_version": 2,
+  "short_name": "AntdDemo",
+  "name": "AntdDemo",
+  "version" : "1.2",
+  "browser_action" : {
+    "default_title" : "AntdDemo",
+    "default_icon" : "logo192.png",
+    "default_popup" : "index.html"
+  },
+  "icons" : {
+    "16" : "logo192.png",
+    "48" : "logo192.png",
+    "128" : "logo512.png"
+  },
+  "content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "splash.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "matches": [
+          "<all_urls>"
+      ],
+      "css": [".static/css/**.css"],
+      "js": ["./static/js/**.js"],
+      "all_frames": false
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#1787E0",
-  "background_color": "#ffffff"
+  ]
 }

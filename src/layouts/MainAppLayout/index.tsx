@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 
 import { useQuery } from '@apollo/react-hooks';
 
+// import * as firebase from 'firebase';
+
 import TabBar from 'antd-mobile/lib/tab-bar';
 import WingBlank from 'antd-mobile/lib/wing-blank';
 import ActivityIndicator from 'antd-mobile/lib/activity-indicator';
@@ -22,6 +24,16 @@ const MENUS = [
 const MainAppLayout: React.FunctionComponent = () => {
   const [selectedTab, setSelectedTab] = React.useState(1);
   const { loading, error, data } = useQuery(GET_PROFILE);
+
+  // React.useEffect(() => {  
+  //   Notification.requestPermission().then(permission => {
+  //     if (permission === 'granted') {
+  //       firebase.messaging().getToken().then(fmcToken => {
+  //         console.log(fmcToken);
+  //       }).catch(console.log);
+  //     }
+  //   }).catch(console.log);
+  // });
 
   if (loading) {
     return <ActivityIndicator toast text="Getting User Info..." />
